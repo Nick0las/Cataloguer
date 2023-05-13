@@ -19,10 +19,10 @@ namespace Cataloguer.ViewModels
         }
         #endregion
 
+
         //конструктор
         public MainWindow_VM()
         {
-            IDownloadAllBooks.ShowBooks(Collections.BooksListCollection);
             IDownloadAllBooks.ShowBooks(Collections.BooksObsCollection);
         }
     }
