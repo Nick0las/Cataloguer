@@ -4,8 +4,10 @@ namespace Cataloguer.Models
 {
     internal class Book
     {
-        ///<summary> автор книги </summary>
-        public BookAuthor? Author { get; set; }
+        //public BookAuthor? Author { get; set; }
+        
+        ///<summary>автор книги</summary>
+        public string? Author { get; set; }
 
         ///<summary> название книги </summary>
         public string Title { get; set; }

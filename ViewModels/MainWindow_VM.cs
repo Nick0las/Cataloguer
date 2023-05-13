@@ -1,10 +1,9 @@
 ﻿using Cataloguer.Models;
+using Cataloguer.Resources.Interfaces;
+using Cataloguer.Services;
 using Cataloguer.ViewModels.ViewModel_Base;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+//using Microsoft.Data.Sqlite;
+
 
 namespace Cataloguer.ViewModels
 {
@@ -23,7 +22,8 @@ namespace Cataloguer.ViewModels
         //конструктор
         public MainWindow_VM()
         {
-            
+            IDownloadAllBooks.ShowBooks(Collections.BooksListCollection);
+            IDownloadAllBooks.ShowBooks(Collections.BooksObsCollection);
         }
     }
 }
