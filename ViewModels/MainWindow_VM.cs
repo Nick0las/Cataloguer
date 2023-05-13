@@ -10,7 +10,7 @@ namespace Cataloguer.ViewModels
     internal class MainWindow_VM : BaseViewModel
     {
         #region заголовок окна
-        private string title = "Каталогизатор";
+        private string title = "Тестовое задание";
         /// <summary>Заголовок окна </summary>
         public string Title
         {

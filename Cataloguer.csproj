@@ -12,10 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Resources\Styles\" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <PackageReference Include="FontAwesome5" Version="2.1.5" />
     <PackageReference Include="Microsoft.Data.Sqlite" Version="7.0.5" />
   </ItemGroup>
 
