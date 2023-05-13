@@ -5,7 +5,7 @@ namespace Cataloguer.Models
     internal class Book
     {
         ///<summary> автор книги </summary>
-        public BookAuthor Autor { get; set; }
+        public BookAuthor? Author { get; set; }
 
         ///<summary> название книги </summary>
         public string Title { get; set; }

@@ -10,7 +10,38 @@
     <Window.DataContext>
         <vm:MainWindow_VM/>
     </Window.DataContext>
-    <Grid>
-
-    </Grid>
+    <DockPanel Background="Cyan">
+        <ToolBar DockPanel.Dock="Top"
+                 Background="Bisque"
+                 HorizontalAlignment="Stretch"
+                 Height="35">            
+        </ToolBar>
+        <Menu DockPanel.Dock="Top"
+              Background="LightBlue"
+              Height="23"
+              VerticalAlignment="Stretch"
+              HorizontalAlignment="Stretch">            
+        </Menu>
+        <StatusBar DockPanel.Dock="Bottom" 
+                   Height="25" 
+                   HorizontalAlignment="Stretch" 
+                   Background="Gray"/>
+        <Grid DockPanel.Dock="Left"
+              VerticalAlignment="Stretch"
+              HorizontalAlignment="Stretch"
+              Background="LightSalmon"
+              Width="150">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>           
+        </Grid>
+        <Grid DockPanel.Dock="Right"
+              VerticalAlignment="Stretch"
+              HorizontalAlignment="Stretch"
+              Background="AliceBlue">
+            
+        </Grid>
+        
+    </DockPanel>
 </Window>

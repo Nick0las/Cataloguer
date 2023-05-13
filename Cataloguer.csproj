@@ -8,8 +8,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Data\" />
+    <None Remove="Data\BookСatalog.db" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Resources\Styles\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Data\DB\BookСatalog.db" />
   </ItemGroup>
 
 </Project>
