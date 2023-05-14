@@ -8,6 +8,6 @@ namespace Cataloguer.Services
     internal class Collections
     {
         /// <summary> для хранения и моментального отображения коллекции</summary>
-        public static ObservableCollection<Book> BooksObsCollection { get; } = new();
+        public static ObservableCollection<Book> BooksObsCollection { get; set; } = new();
     }
 }
