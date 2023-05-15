@@ -7,7 +7,7 @@
         xmlns:fa="http://schemas.fontawesome.com/icons/"
         xmlns:serv="clr-namespace:Cataloguer.Services"
         xmlns:vm="clr-namespace:Cataloguer.ViewModels"        
-        Title="{Binding Title}" MinHeight="450" MinWidth="700" Height="600" Width="800"
+        Title="{Binding Title}" MinHeight="450" MinWidth="850" Height="600" Width="1000"
         WindowStartupLocation="CenterScreen">
     <Window.DataContext>
         <vm:MainWindow_VM/>
@@ -54,7 +54,7 @@
                 <MenuItem Header="Сохранить"
                           FontWeight="Normal"
                           FontStyle="Normal"
-                          FontFamily="Sylfaen"
+                          FontFamily="Monotype Corsiva"
                           FontSize="14">
                 </MenuItem>
             </MenuItem>
@@ -74,42 +74,95 @@
         <Grid DockPanel.Dock="Left"
               VerticalAlignment="Stretch"
               HorizontalAlignment="Stretch"
-              Background="LightSlateGray"
-              Width="200">
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>           
+              Background="LightSlateGray">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="7*"/>
+            </Grid.ColumnDefinitions>
+            <GroupBox Header="{Binding SelectedBook.Title, FallbackValue='Книга', TargetNullValue='Книга не выбрана'}"
+                      Grid.Column="0">
+                <TextBlock Text="{Binding SelectedBook.Content}"
+                           Foreground="White"
+                           TextWrapping="Wrap">
+                </TextBlock>
+            </GroupBox>
+            <GroupBox Header="Каталог"
+                      Grid.Column="1">
+                <DataGrid AutoGenerateColumns="False"
+                          CanUserReorderColumns="False"
+                          CanUserAddRows="False"
+                          CanUserResizeColumns="True"
+                          IsReadOnly="True"
+                          GridLinesVisibility="Vertical"
+                          VerticalGridLinesBrush="DarkGray"
+                          ItemsSource="{Binding BooksObsCollection}"
+                          SelectedItem="{Binding SelectedBook}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn MinWidth ="130"
+                                        Width="auto"
+                                        Header="Фамилия"
+                                        Binding="{Binding Author.Surname}"/>
+                        <DataGridTextColumn MinWidth ="130"
+                                        Width="auto"
+                                        Header="Имя"
+                                        Binding="{Binding Author.Name}"/>
+                        <DataGridTextColumn MinWidth ="130"
+                                        Width="auto"
+                                        Header="Отчество"
+                                        Binding="{Binding Author.MidleName}"/>
+                        <DataGridTextColumn Width="2*"
+                                        Header="Название"
+                                        Binding="{Binding Title}"/>
+                        <DataGridTextColumn Width="1*"
+                                        Header="Тематика"
+                                        Binding="{Binding Genre}"/>
+                        <DataGridTextColumn Width="*"
+                                        Header="Год издания"
+                                        Binding="{Binding YearPublication}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </GroupBox>
         </Grid>
-        <Grid DockPanel.Dock="Right"
+        <!--<Grid DockPanel.Dock="Right"
               VerticalAlignment="Stretch"
               HorizontalAlignment="Stretch"
               Background="AliceBlue">
-            <DataGrid AutoGenerateColumns="False"
-                      CanUserReorderColumns="False" 
-                      CanUserAddRows="False"
-                      CanUserResizeColumns="False"
-                      IsReadOnly="True"
-                      GridLinesVisibility="Vertical"
-                      VerticalGridLinesBrush="DarkGray"
-                      ItemsSource="{Binding Source={x:Static serv:Collections.BooksObsCollection}}">
-                <DataGrid.Columns>
-                    <DataGridTextColumn MinWidth ="130"
+            <GroupBox Header="Каталог">
+                <DataGrid AutoGenerateColumns="False"
+                          CanUserReorderColumns="False"
+                          CanUserAddRows="False"
+                          CanUserResizeColumns="True"
+                          IsReadOnly="True"
+                          GridLinesVisibility="Vertical"
+                          VerticalGridLinesBrush="DarkGray"
+                          ItemsSource="{Binding BooksObsCollection}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn MinWidth ="130"
                                         Width="auto"
-                                        Header="Автор"
-                                        Binding="{Binding Author}"/>
-                    <DataGridTextColumn Width="2*"
+                                        Header="Фамилия"
+                                        Binding="{Binding Author.Surname}"/>
+                        <DataGridTextColumn MinWidth ="130"
+                                        Width="auto"
+                                        Header="Имя"
+                                        Binding="{Binding Author.Name}"/>
+                        <DataGridTextColumn MinWidth ="130"
+                                        Width="auto"
+                                        Header="Отчество"
+                                        Binding="{Binding Author.MidleName}"/>
+                        <DataGridTextColumn Width="2*"
                                         Header="Название"
                                         Binding="{Binding Title}"/>
-                    <DataGridTextColumn Width="1*"
+                        <DataGridTextColumn Width="1*"
                                         Header="Тематика"
                                         Binding="{Binding Genre}"/>
-                    <DataGridTextColumn Width="*"
+                        <DataGridTextColumn Width="*"
                                         Header="Год издания"
                                         Binding="{Binding YearPublication}"/>
-                </DataGrid.Columns>
-            </DataGrid>
-        </Grid>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </GroupBox>
+            
+        </Grid>-->
         
     </DockPanel>
 </Window>
