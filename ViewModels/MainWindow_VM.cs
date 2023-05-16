@@ -2,17 +2,20 @@
 using Cataloguer.Resources.Interfaces;
 using Cataloguer.Services;
 using Cataloguer.ViewModels.ViewModel_Base;
+using OxyPlot;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
-//using Microsoft.Data.Sqlite;
+using System.Windows.Data;
+
 
 
 namespace Cataloguer.ViewModels
 {
     internal class MainWindow_VM : BaseViewModel
     {
-        #region Свойства, привязанные к окну
+        
         #region заголовок окна
         private string title = "Тестовое задание";
         /// <summary>Заголовок окна </summary>
@@ -23,19 +26,49 @@ namespace Cataloguer.ViewModels
         }
         #endregion
 
+        #region Свойство ObservableCollection, для отображения коллекции в DataGrid
+        public ObservableCollection<Book> BooksObsCollection { get; }
+        #endregion
+
+        #region Свойство для выделенной строки в DataGrid
         /*Свойство для выбора книги*/
         private Book selectedBook;
-        public Book SelectedBook { get => selectedBook;set => Set(ref selectedBook, value); }
+        public Book SelectedBook 
+        {
+            get => selectedBook;
+            set => Set(ref selectedBook, value); 
+            
+        }
         /*--------------------------------------------------------------------------------------------------------------*/
         #endregion
 
-        public ObservableCollection<Book> BooksObsCollection { get; }        
+        
+
+        #region Для фильтра
+        #region Свойство для отображения жанров в ComboBox
+        public List<Book> BooksOnlyGenres { get; set; } = new();
+        private LiteraryGenres genres;
+        public LiteraryGenres Genres
+        {
+            get => genres;
+            set => Set(ref genres, value);
+        }
+
+        #endregion
+
+
+
+        #endregion
+
+
+
 
         //конструктор
         public MainWindow_VM()
         {
             IDownloadAllBooks.ShowBooks(Collections.BooksICollections);            
             BooksObsCollection = new ObservableCollection<Book>(Collections.BooksICollections);
+            
         }
     }
 }

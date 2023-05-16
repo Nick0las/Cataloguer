@@ -89,7 +89,7 @@ namespace Cataloguer.Resources.Interfaces
                 book.Genre = (LiteraryGenres)Convert.ToInt32(sqliteDataReader[4]);
                 book.YearPublication = Convert.ToUInt32(sqliteDataReader[5]);
                 book.Content = sqliteDataReader[6].ToString();
-                Books.Add(book);
+                Books.Add(book);                
             }
             sqliteDataReader.Close();
             connection.CloseConnection();
