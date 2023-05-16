@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Cataloguer.ViewModels
 {
-    internal class AddNewBook : BaseViewModel
+    internal class AddNewBook_VM : BaseViewModel
     {
         #region заголовок окна
         private string title = "+1 к коллекции книг!";

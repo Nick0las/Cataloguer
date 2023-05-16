@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace Cataloguer.Views
 {
     /// <summary>
-    /// Логика взаимодействия для AddNewBook.xaml
+    /// Логика взаимодействия для AddNewBookWindow.xaml
     /// </summary>
-    public partial class AddNewBook : Window
+    public partial class AddNewBookWindow : Window
     {
-        public AddNewBook()
+        public AddNewBookWindow()
         {
             InitializeComponent();
         }
