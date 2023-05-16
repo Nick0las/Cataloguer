@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:l="clr-namespace:Cataloguer.Views"
         xmlns:vm="clr-namespace:Cataloguer.ViewModels"
-        Title="{Binding Title}" Height="450" Width="650">
+        Title="{Binding Title}" Height="450" Width="650"
+        WindowStartupLocation="CenterScreen">
     <Window.DataContext>
         <vm:AddNewBook_VM/>
     </Window.DataContext>
@@ -40,26 +41,31 @@
         <Grid DockPanel.Dock="Top">
             <Grid.RowDefinitions>
                 <RowDefinition Height="25"/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="40"/>
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0"
                        Text="Автор"
-                       HorizontalAlignment="Center"
+                       HorizontalAlignment="Left"
                        VerticalAlignment="Top"
+                       Margin="10,0,0,0"
                        Height="20"
                        Width="55"
                        FontWeight="Normal"
                        FontStyle="Normal"
                        FontFamily="Monotype Corsiva"
                        FontSize="20"
-                       Foreground="Gold"/>
+                       Foreground="Gold"
+                       TextDecorations="Underline"/>
             <TextBlock Grid.Row="1"
-                       Margin="10,5,25,5"
-                       Text="Фамилия"
+                       Margin="10,5,25,0"
+                       Text="Фамилия:"
                        HorizontalAlignment="Left"
                        VerticalAlignment="Top"
                        Height="20"
@@ -69,15 +75,15 @@
                        FontSize="20"
                        Foreground="Gold"/>
             <TextBox Grid.Row="1"
-                     Margin="10,5,10,0"
-                     Height="16"
+                     Margin="10,15,10,0"
+                     Height="25"
                      Width="200"
                      VerticalAlignment="Center"
                      HorizontalAlignment="Left"/>
 
             <TextBlock Grid.Row="1"
-                       Margin="0,5,165,5"
-                       Text="Имя"
+                       Margin="0,5,165,0"
+                       Text="Имя:"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Top"
                        Height="20"
@@ -87,15 +93,15 @@
                        FontSize="20"
                        Foreground="Gold"/>
             <TextBox Grid.Row="1"
-                     Margin="0,5,0,0"
-                     Height="16"
+                     Margin="10,15,10,0"
+                     Height="25"
                      Width="200"
                      VerticalAlignment="Center"
                      HorizontalAlignment="Center"/>
 
             <TextBlock Grid.Row="1"
-                       Margin="0,5,125,5"
-                       Text="Отчество"
+                       Margin="0,5,125,0"
+                       Text="Отчество:"
                        Width="85"
                        HorizontalAlignment="Right"
                        VerticalAlignment="Top"
@@ -106,11 +112,107 @@
                        FontSize="20"
                        Foreground="Gold"/>
             <TextBox Grid.Row="1"
-                     Margin="10,5,10,0"
-                     Height="16"
+                     Margin="10,15,10,0"
+                     Height="25"
                      Width="200"
                      VerticalAlignment="Center"
                      HorizontalAlignment="Right"/>
+
+            <TextBlock Grid.Row="2"
+                       Text="Название"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Top"
+                       Margin="10,0,0,0"
+                       Height="20"
+                       Width="75"                       
+                       FontWeight="Normal"
+                       FontStyle="Normal"
+                       FontFamily="Monotype Corsiva"
+                       FontSize="20"
+                       Foreground="Gold"
+                       TextDecorations="Underline"/>
+            <TextBox Grid.Row="3"
+                     Margin="10,5,10,0"
+                     Height="25"
+                     Width="630"
+                     VerticalAlignment="Top"
+                     HorizontalAlignment="Left"
+                     TextWrapping="Wrap"/>
+            <TextBlock Grid.Row="4"
+                       Text="Жанр"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Top"
+                       Margin="10,0,0,0"
+                       Height="20"
+                       Width="45"                       
+                       FontWeight="Normal"
+                       FontStyle="Normal"
+                       FontFamily="Monotype Corsiva"
+                       FontSize="20"
+                       Foreground="Gold"
+                       TextDecorations="Underline"/>
+            <ComboBox Grid.Row="4"
+                      HorizontalAlignment="Left"
+                      VerticalAlignment="Center"
+                      Margin="65,0,0,0"
+                      Width="150">                
+            </ComboBox>
+
+            <TextBlock Grid.Row="5"
+                       Text="Год издания"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Top"
+                       Margin="10,5,0,0"
+                       Height="20"
+                       Width="100"                       
+                       FontWeight="Normal"
+                       FontStyle="Normal"
+                       FontFamily="Monotype Corsiva"
+                       FontSize="20"
+                       Foreground="Gold"
+                       TextDecorations="Underline"/>
+            <TextBox Grid.Row="5"
+                     Margin="115,5,10,0"
+                     Height="25"
+                     Width="100"
+                     VerticalAlignment="Top"
+                     HorizontalAlignment="Left"
+                     TextWrapping="Wrap"/>
+            <TextBlock Grid.Row="6"
+                       Text="Краткое описание"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Top"
+                       Margin="10,5,0,0"
+                       Height="20"
+                       Width="150"
+                       FontWeight="Normal"
+                       FontStyle="Normal"
+                       FontFamily="Monotype Corsiva"
+                       FontSize="20"
+                       Foreground="Gold"
+                       TextDecorations="Underline"/>
+            <TextBox Grid.Row="7"
+                     Margin="10,5,10,5"
+                     VerticalAlignment="Stretch"
+                     HorizontalAlignment="Stretch"
+                     TextWrapping="Wrap"/>
+            <Button Grid.Row="8" 
+                    Content="Сохранить"
+                    Width="150"
+                    Margin="0,5,5,5"
+                    Height="30"
+                    HorizontalAlignment="Right"
+                    Style="{StaticResource CheckButtonStyle}">
+            </Button>
+            <Button Grid.Row="8" 
+                    Content="Отменить"
+                    Width="150"
+                    Margin="0,5,210,5"                    
+                    Height="30"
+                    HorizontalAlignment="Right"
+                    Style="{StaticResource CloseButtonStyle}">
+            </Button>
+            
         </Grid>
     </DockPanel>
 </Window>
