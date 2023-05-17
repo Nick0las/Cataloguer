@@ -14,7 +14,7 @@ namespace Cataloguer.Models
         /// <summary>Имя автора книги</summary>
         public string Name { get; set; }
 
-    /// <summary>Отчество автора книги</summary>
-    public string? MidleName { get; set; }
-}
+        /// <summary>Отчество автора книги</summary>
+        public string? MidleName { get; set; }
+    }
 }

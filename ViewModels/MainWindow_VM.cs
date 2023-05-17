@@ -27,7 +27,7 @@ namespace Cataloguer.ViewModels
         #endregion
 
         #region Свойство ObservableCollection, для отображения коллекции в DataGrid
-        public ObservableCollection<Book> BooksObsCollection { get; }
+        //public ObservableCollection<Book> BooksObsCollection { get; }
         #endregion
 
         #region Свойство для выделенной строки в DataGrid
@@ -66,8 +66,10 @@ namespace Cataloguer.ViewModels
         //конструктор
         public MainWindow_VM()
         {
-            IDownloadAllBooks.ShowBooks(Collections.BooksICollections);            
-            BooksObsCollection = new ObservableCollection<Book>(Collections.BooksICollections);
+            //IDownloadAllBooks.ShowBooks(Collections.BooksICollections);
+            //BooksObsCollection = new ObservableCollection<Book>(Collections.BooksICollections);
+
+            IDownloadAllBooks.ShowBooks(Collections.BooksObsCollection);
             
         }
     }

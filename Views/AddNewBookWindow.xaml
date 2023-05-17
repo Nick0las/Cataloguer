@@ -4,8 +4,10 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:l="clr-namespace:Cataloguer.Views"
+        xmlns:res="clr-namespace:Cataloguer.Resources"
         xmlns:vm="clr-namespace:Cataloguer.ViewModels"
-        Title="{Binding Title}" Height="450" Width="650"
+        xmlns:model="clr-namespace:Cataloguer.Models"
+        Title="{Binding Title}" MinHeight="450" Height="450" MinWidth="650" Width="650"
         WindowStartupLocation="CenterScreen">
     <Window.DataContext>
         <vm:AddNewBook_VM/>
@@ -79,7 +81,8 @@
                      Height="25"
                      Width="200"
                      VerticalAlignment="Center"
-                     HorizontalAlignment="Left"/>
+                     HorizontalAlignment="Left"
+                     Text="{Binding SurnameAuthor}"/>
 
             <TextBlock Grid.Row="1"
                        Margin="0,5,165,0"
@@ -97,7 +100,8 @@
                      Height="25"
                      Width="200"
                      VerticalAlignment="Center"
-                     HorizontalAlignment="Center"/>
+                     HorizontalAlignment="Center"
+                     Text="{Binding NameAuthor}"/>
 
             <TextBlock Grid.Row="1"
                        Margin="0,5,125,0"
@@ -116,7 +120,8 @@
                      Height="25"
                      Width="200"
                      VerticalAlignment="Center"
-                     HorizontalAlignment="Right"/>
+                     HorizontalAlignment="Right"
+                     Text="{Binding MidllenameAuthor}"/>
 
             <TextBlock Grid.Row="2"
                        Text="Название"
@@ -137,7 +142,8 @@
                      Width="630"
                      VerticalAlignment="Top"
                      HorizontalAlignment="Left"
-                     TextWrapping="Wrap"/>
+                     TextWrapping="Wrap"
+                     Text="{Binding TitleBook}"/>
             <TextBlock Grid.Row="4"
                        Text="Жанр"
                        HorizontalAlignment="Left"
@@ -155,7 +161,9 @@
                       HorizontalAlignment="Left"
                       VerticalAlignment="Center"
                       Margin="65,0,0,0"
-                      Width="150">                
+                      Width="150"
+                      ItemsSource="{Binding Source={res:EnumBindingSource {x:Type model:LiteraryGenres}}}"
+                      SelectedIndex="{Binding SelectedGenres}">
             </ComboBox>
 
             <TextBlock Grid.Row="5"
@@ -177,7 +185,11 @@
                      Width="100"
                      VerticalAlignment="Top"
                      HorizontalAlignment="Left"
-                     TextWrapping="Wrap"/>
+                     Text="{Binding YearPublicationBook, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+            <TextBlock Grid.Row="5"
+                       Margin="215,5,10,5"
+                       Text="{Binding Error}"
+                       Foreground="Orange"/>
             <TextBlock Grid.Row="6"
                        Text="Краткое описание"
                        HorizontalAlignment="Left"
@@ -195,14 +207,16 @@
                      Margin="10,5,10,5"
                      VerticalAlignment="Stretch"
                      HorizontalAlignment="Stretch"
-                     TextWrapping="Wrap"/>
+                     TextWrapping="Wrap"
+                     Text="{Binding ContentBook}"/>
             <Button Grid.Row="8" 
                     Content="Сохранить"
                     Width="150"
                     Margin="0,5,5,5"
                     Height="30"
                     HorizontalAlignment="Right"
-                    Style="{StaticResource CheckButtonStyle}">
+                    Style="{StaticResource CheckButtonStyle}"
+                    Command="{Binding AddNewBookCmd}">
             </Button>
             <Button Grid.Row="8" 
                     Content="Отменить"

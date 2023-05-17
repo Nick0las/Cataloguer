@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:l="clr-namespace:Cataloguer"
         xmlns:fa="http://schemas.fontawesome.com/icons/"
+        xmlns:model="clr-namespace:Cataloguer.Models"
         xmlns:serv="clr-namespace:Cataloguer.Services"
         xmlns:vm="clr-namespace:Cataloguer.ViewModels"
         xmlns:cmd="clr-namespace:Cataloguer.Commands"
@@ -130,11 +131,13 @@
                       FontWeight="Bold"
                       FontSize="14"
                       BorderBrush="Yellow">
-                <TextBlock Text="{Binding SelectedBook.Content}"
-                           Foreground="White"
-                           TextWrapping="Wrap"
-                           FontSize="12">
-                </TextBlock>
+                <TextBox Text="{Binding SelectedBook.Content}"
+                         Background="LightSlateGray"
+                         Foreground="White"
+                         TextWrapping="Wrap"
+                         FontSize="12"
+                         IsReadOnly="True">
+                </TextBox>
             </GroupBox>
             <GroupBox Header="Каталог"
                       Grid.Column="1"
@@ -153,7 +156,7 @@
                           VerticalGridLinesBrush="DarkGray"
                           BorderThickness="2"
                           FontWeight="Normal"
-                          ItemsSource="{Binding BooksObsCollection}"
+                          ItemsSource="{Binding Source={x:Static serv:Collections.BooksObsCollection}}"
                           SelectedItem="{Binding SelectedBook}"
                           Background="LightSlateGray">
                     <DataGrid.Resources>
@@ -193,6 +196,7 @@
                         <DataGridTextColumn Width="1*"
                                         Header="Тематика"
                                         Binding="{Binding Genre}"/>
+                        
                         <DataGridTextColumn Width="*"
                                         Header="Год издания"
                                         Binding="{Binding YearPublication}"/>

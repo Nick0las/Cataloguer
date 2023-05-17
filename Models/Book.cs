@@ -1,10 +1,10 @@
-﻿
+﻿using System;
 
-using System.Collections.Generic;
+
 
 namespace Cataloguer.Models
 {
-    internal class Book
+    internal class Book 
     {
         public BookAuthor? Author { get; set; }
         
@@ -20,7 +20,5 @@ namespace Cataloguer.Models
         ///<summary> год издания</summary>
         public uint YearPublication { get; set; }
         public string? Content { get; set; }
-
-        public ICollection<Book> BooksCollections { get; set; }
     }
 }
