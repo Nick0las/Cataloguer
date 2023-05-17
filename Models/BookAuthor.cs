@@ -8,6 +8,8 @@ namespace Cataloguer.Models
 {
     internal class BookAuthor
     {
+        /// <summary>ID автора книги</summary>
+        public int? IdAuhtor { get; set; }
         /// <summary>Фамилия автора книги</summary>
         public string Surname { get; set; }
 

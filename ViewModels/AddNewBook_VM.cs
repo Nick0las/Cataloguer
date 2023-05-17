@@ -2,6 +2,7 @@
 using Cataloguer.Models;
 using Cataloguer.Services;
 using Cataloguer.ViewModels.ValidatableViewModelBase;
+using Cataloguer.Resources.Interfaces;
 using Cataloguer.ViewModels.ViewModel_Base;
 using System;
 using System.Collections.Generic;
@@ -109,11 +110,16 @@ namespace Cataloguer.ViewModels
 
             book.Content = ContentBook;
             Collections.BooksObsCollection.Add(book);
+
+            
+
         }
         #endregion
 
         public AddNewBook_VM()
         {
+            Collections.BookAuthorCollection.Clear();
+            IDownloadAuthors.ShowAuthors(Collections.BookAuthorCollection);
             AddNewBookCmd = new LamdaCommand(OnAddNewBookCmdExecuted, CanAddNewBookCmdExecute);
         }
 

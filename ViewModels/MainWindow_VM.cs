@@ -42,24 +42,6 @@ namespace Cataloguer.ViewModels
         /*--------------------------------------------------------------------------------------------------------------*/
         #endregion
 
-        
-
-        #region Для фильтра
-        #region Свойство для отображения жанров в ComboBox
-        public List<Book> BooksOnlyGenres { get; set; } = new();
-        private LiteraryGenres genres;
-        public LiteraryGenres Genres
-        {
-            get => genres;
-            set => Set(ref genres, value);
-        }
-
-        #endregion
-
-
-
-        #endregion
-
 
 
 
@@ -67,7 +49,6 @@ namespace Cataloguer.ViewModels
         public MainWindow_VM()
         {
             IDownloadAllBooks.ShowBooks(Collections.BooksObsCollection);
-            
         }
     }
 }

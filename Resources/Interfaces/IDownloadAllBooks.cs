@@ -32,6 +32,7 @@ namespace Cataloguer.Resources.Interfaces
                 Book book = new();
 
                 BookAuthor author = new();
+                author.IdAuhtor = null;
                 author.Surname = sqliteDataReader[0].ToString();
                 author.Name = sqliteDataReader[1].ToString();
                 author.MidleName = sqliteDataReader[2].ToString();

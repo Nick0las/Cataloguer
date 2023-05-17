@@ -9,6 +9,7 @@
         xmlns:res="clr-namespace:Cataloguer.Resources"
         xmlns:vm="clr-namespace:Cataloguer.ViewModels"
         xmlns:model="clr-namespace:Cataloguer.Models"
+        xmlns:serv="clr-namespace:Cataloguer.Services"
         Title="{Binding Title}" MinHeight="450" Height="450" MinWidth="650" Width="650"
         WindowStartupLocation="CenterScreen">
     <Window.DataContext>
@@ -67,6 +68,21 @@
                        FontSize="20"
                        Foreground="Gold"
                        TextDecorations="Underline"/>
+            <ComboBox Grid.Row="0"
+                      HorizontalAlignment="Left"
+                      Width="250"
+                      Margin="100,0,0,0"
+                      ItemsSource="{Binding Source={x:Static serv:Collections.BookAuthorCollection}}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock>
+                            <Run Text="{Binding Surname}"/>
+                            <Run Text="{Binding Name}"/>
+                            <Run Text="{Binding MidleName}"/>
+                        </TextBlock>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
             <TextBlock Grid.Row="1"
                        Margin="10,5,25,0"
                        Text="Фамилия:"
@@ -226,7 +242,8 @@
                     Margin="0,5,210,5"                    
                     Height="30"
                     HorizontalAlignment="Right"
-                    Style="{StaticResource CloseButtonStyle}">
+                    Style="{StaticResource CloseButtonStyle}"
+                    IsCancel="True">
                 <i:Interaction.Behaviors>
                     <b:CloseWindow/>
                 </i:Interaction.Behaviors>
