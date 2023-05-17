@@ -66,9 +66,6 @@ namespace Cataloguer.ViewModels
         //конструктор
         public MainWindow_VM()
         {
-            //IDownloadAllBooks.ShowBooks(Collections.BooksICollections);
-            //BooksObsCollection = new ObservableCollection<Book>(Collections.BooksICollections);
-
             IDownloadAllBooks.ShowBooks(Collections.BooksObsCollection);
             
         }

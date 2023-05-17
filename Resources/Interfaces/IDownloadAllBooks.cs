@@ -14,7 +14,7 @@ namespace Cataloguer.Resources.Interfaces
         /// <param name="Books"></param>
         internal static void ShowBooks(ObservableCollection<Book> Books)
         {
-            //запрос к БД на выборку из 2 таблиц(автор, книга) - возвращает ФИО_автора, название_книги, жанр_книги, год_издания
+            //запрос к БД на выборку из 2 таблиц(автор, книга) - возвращает ФИО_автора, название_книги, жанр_книги(id), год_издания
             string sqlQuery = "SELECT BookAuthor.SurnameAuthor, BookAuthor.NameAuthor, " +
                 "BookAuthor.MidlenameAuthor, Books.BookTitle, Books.BookGenres, " +
                 "Books.BookYearPublication, Books.Content " +
@@ -36,12 +36,6 @@ namespace Cataloguer.Resources.Interfaces
                 author.Name = sqliteDataReader[1].ToString();
                 author.MidleName = sqliteDataReader[2].ToString();
                 book.Author = author;
-
-                //string author;
-                //author = sqliteDataReader[0].ToString();
-                //author = author + " " + sqliteDataReader[1].ToString();
-                //author = author + " " + sqliteDataReader[2].ToString();
-                //book.Author = author;
 
                 book.Title = sqliteDataReader[3].ToString();                
                 book.Genre = (LiteraryGenres)Convert.ToInt32(sqliteDataReader[4]);
@@ -78,13 +72,6 @@ namespace Cataloguer.Resources.Interfaces
                 author.Name = sqliteDataReader[1].ToString();
                 author.MidleName = sqliteDataReader[2].ToString();
                 book.Author = author;
-
-                //string author;
-                //author = sqliteDataReader[0].ToString();
-                //author = author + " " + sqliteDataReader[1].ToString();
-                //author = author + " " + sqliteDataReader[2].ToString();
-                //book.Author = author;
-
                 book.Title = sqliteDataReader[3].ToString();
                 book.Genre = (LiteraryGenres)Convert.ToInt32(sqliteDataReader[4]);
                 book.YearPublication = Convert.ToUInt32(sqliteDataReader[5]);

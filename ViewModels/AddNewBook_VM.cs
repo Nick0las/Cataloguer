@@ -7,7 +7,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace Cataloguer.ViewModels
@@ -89,16 +91,7 @@ namespace Cataloguer.ViewModels
         public ICommand AddNewBookCmd { get; }
         private bool CanAddNewBookCmdExecute(object p) => true;
         private void OnAddNewBookCmdExecuted(object p)
-        {
-            /*
-            string surnameAuthor2DB = SurnameAuthor;
-            string nameAuthor2DB = NameAuthor;
-            string middleNameAuthor2DB = MidllenameAuthor;
-            string titleBook2DB = TitleBook;
-            int genreBook2DB = SelectedGenres;
-            int yearPublic2DB = YearPublicationBook;
-            string contentBook2DB = ContentBook;
-            */
+        {   
             Book book = new();
             BookAuthor bookAuthor = new();
             bookAuthor.Surname = SurnameAuthor;
@@ -107,19 +100,19 @@ namespace Cataloguer.ViewModels
             book.Author = bookAuthor;
             book.Title = TitleBook;
             book.Genre = (LiteraryGenres)SelectedGenres;
-            book.YearPublication = Convert.ToUInt32(YearPublicationBook);
+            if(Regex.IsMatch(YearPublicationBook, @"^[a-zA-Z0-9_!@#$%^&*()-+=\|/<>]+$") || Regex.IsMatch(YearPublicationBook, @"^[a-zA-Z]+$"))
+            {
+                MessageBox.Show("Игнорируя предупреждения вы все таки допустили ошибку!", "Внимание! Исправьте ввод года издания!", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+            else
+            {
+                book.YearPublication = Convert.ToUInt32(YearPublicationBook);
+            }
+            
             book.Content = ContentBook;
 
             Collections.BooksObsCollection.Add(book);
-
-
-
-
-
-
-
-
-            //book.Genre = SelectedGenres;
         }
         #endregion
 
@@ -128,6 +121,11 @@ namespace Cataloguer.ViewModels
             AddNewBookCmd = new LamdaCommand(OnAddNewBookCmdExecuted, CanAddNewBookCmdExecute);
         }
 
+        /// <summary>
+        /// переопределенный метод проверки на валидность введенной пользователем информации.
+        /// </summary>
+        /// <param name="columnName"></param>
+        /// <returns></returns>
         protected override string Validate(string columnName)
         {
             if (columnName == nameof(YearPublicationBook))
@@ -144,6 +142,8 @@ namespace Cataloguer.ViewModels
 
             return String.Empty;
         }
+
+        
 
     }
 }
