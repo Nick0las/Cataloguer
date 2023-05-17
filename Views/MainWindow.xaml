@@ -4,6 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:l="clr-namespace:Cataloguer"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:b="clr-namespace:Cataloguer.Resources.Behaviors"
         xmlns:fa="http://schemas.fontawesome.com/icons/"
         xmlns:model="clr-namespace:Cataloguer.Models"
         xmlns:serv="clr-namespace:Cataloguer.Services"
@@ -71,6 +73,13 @@
                           Foreground="Gold">
                 </MenuItem>
                 <MenuItem Header="Сохранить"
+                          FontWeight="Normal"
+                          FontStyle="Normal"
+                          FontFamily="Monotype Corsiva"
+                          FontSize="14"
+                          Foreground="Gold">
+                </MenuItem>
+                <MenuItem Header="Выход"
                           FontWeight="Normal"
                           FontStyle="Normal"
                           FontFamily="Monotype Corsiva"

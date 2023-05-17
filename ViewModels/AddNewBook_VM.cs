@@ -94,8 +94,11 @@ namespace Cataloguer.ViewModels
         {   
             Book book = new();
             BookAuthor bookAuthor = new();
+            
+            //проверка на корректный ввод данных ФИО автора через регулярные выражения
             bool flag = ValidateEnterBookAuthor(bookAuthor, SurnameAuthor, NameAuthor, MidllenameAuthor);
             if (flag == false) return;
+
             book.Author = bookAuthor;
             book.Title = TitleBook;
             book.Genre = (LiteraryGenres)SelectedGenres;
@@ -105,7 +108,6 @@ namespace Cataloguer.ViewModels
             if(flagYear == false) return;
 
             book.Content = ContentBook;
-
             Collections.BooksObsCollection.Add(book);
         }
         #endregion
