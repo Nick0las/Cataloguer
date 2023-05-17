@@ -100,9 +100,12 @@ namespace Cataloguer.ViewModels
             book.Author = bookAuthor;
             book.Title = TitleBook;
             book.Genre = (LiteraryGenres)SelectedGenres;
-            if(Regex.IsMatch(YearPublicationBook, @"^[a-zA-Z0-9_!@#$%^&*()-+=\|/<>]+$") || Regex.IsMatch(YearPublicationBook, @"^[a-zA-Z]+$"))
+
+            //проверка на корректный ввод данных года издания через регулярные выражения
+            if (!Regex.IsMatch(YearPublicationBook, @"^[0-9]+$"))
             {
-                MessageBox.Show("Игнорируя предупреждения вы все таки допустили ошибку!", "Внимание! Исправьте ввод года издания!", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Игнорируя предупреждения вы все таки допустили ошибку!", "Внимание! Исправьте ввод года издания!", 
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
             else

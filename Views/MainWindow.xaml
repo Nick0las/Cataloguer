@@ -88,9 +88,19 @@
         </Menu>
         <ToolBar DockPanel.Dock="Top"                 
                  Foreground="Gold"
-                 Height="36"
+                 Height="36"                 
                  Background="Black">
             <Separator/>
+            <Button Width="100"
+                    Height="30"
+                    Style="{StaticResource AddButtonStyle}"
+                    Content="Новая книга"
+                    Foreground="#ff00a7">
+                <Button.Command>
+                    <cmd:OpenWinAddNewBookCmd/>
+                </Button.Command>
+                
+            </Button>            
             <fa:ImageAwesome Height="16" Icon="Solid_Search" 
                              Foreground="Gold"
                              Margin="5"/>

@@ -12,7 +12,8 @@
             </Setter.Value>
         </Setter>
     </Style>
-
+    
+    <!--/******************************************************************************/-->
     <ControlTemplate x:Key="CastomButtonTemplate" TargetType="{x:Type Button}">
         <Border x:Name="border"
                 CornerRadius="5"
@@ -33,16 +34,13 @@
             </Trigger>
             <Trigger Property="IsPressed" Value="true">
                 <Setter Property="Background" TargetName="border" Value="DarkBlue"/>
-                <!--<Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>-->
             </Trigger>
             <Trigger Property="IsEnabled" Value="false">
-                <!--<Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>-->
                 <Setter Property="BorderBrush" TargetName="border" Value="DarkGray"/>
                 <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="DarkGray"/>
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
-
     <Style x:Key="CastomButtonStyle" TargetType="{x:Type Button}">
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
         <Setter Property="Background" Value="White"/>
@@ -55,8 +53,9 @@
         <Setter Property="Template" Value="{StaticResource CastomButtonTemplate}">
         </Setter>
     </Style>
-
-
+    <!--/******************************************************************************/-->
+    
+    <!--/******************************************************************************/-->
     <ControlTemplate x:Key="CloseButtonTemplate" TargetType="{x:Type Button}">
         <Border x:Name="border"
                 CornerRadius="5"
@@ -112,7 +111,9 @@
         <Setter Property="Template" Value="{StaticResource CloseButtonTemplate}">
         </Setter>
     </Style>
+    <!--/******************************************************************************/-->
 
+    <!--/******************************************************************************/-->
     <ControlTemplate x:Key="CheckButtonTemplate" TargetType="{x:Type Button}">
         <Border x:Name="border"
                 CornerRadius="5"
@@ -155,7 +156,6 @@
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
-
     <Style x:Key="CheckButtonStyle" TargetType="{x:Type Button}">
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
         <Setter Property="Background" Value="#37a600"/>
@@ -168,4 +168,64 @@
         <Setter Property="Template" Value="{StaticResource CheckButtonTemplate}">
         </Setter>
     </Style>
+    <!--/******************************************************************************/-->
+
+    <!--/******************************************************************************/-->
+    <ControlTemplate x:Key="AddButtonTemplate" TargetType="{x:Type Button}">
+        <Border x:Name="border"
+                CornerRadius="5"
+                Background="{TemplateBinding Background}" 
+                BorderBrush="{TemplateBinding BorderBrush}" 
+                BorderThickness="{TemplateBinding BorderThickness}" 
+                SnapsToDevicePixels="true">
+            <DockPanel HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                       VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                       Margin="{TemplateBinding Padding}">
+                <fa:ImageAwesome x:Name="IconCheck" Height="12" 
+                                 Icon="Solid_BookOpen" 
+                                 Foreground="Cyan" 
+                                 Margin="0,0,3,0"
+                                 Effect="{StaticResource ShadowDepth1}"/>
+                <ContentPresenter x:Name="contentPresenter" 
+                              Focusable="False"
+                              RecognizesAccessKey="True" 
+                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+            </DockPanel>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsDefaulted" Value="true">
+                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property="Background" TargetName="border" Value="Gold"/>
+                <Setter Property="BorderBrush" TargetName="border" Value="Gold"/>
+                <Setter TargetName="IconCheck" Property="Foreground" Value="Cyan"/>
+                <Setter Property="Foreground" Value="White"/>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="true">
+                <Setter Property="Background" TargetName="border" Value="#FFB8860B"/>
+                <Setter Property="BorderBrush" TargetName="border" Value="Black"/>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="false">                
+                <Setter Property="BorderBrush" TargetName="border" Value="DarkGray"/>
+                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="#ff00a7"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <Style x:Key="AddButtonStyle" TargetType="{x:Type Button}">
+        <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+        <Setter Property="Background" Value="Gold"/>
+        <Setter Property="BorderBrush" Value="Red"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Padding" Value="1"/>
+        <Setter Property="Template" Value="{StaticResource AddButtonTemplate}">
+        </Setter>
+    </Style>
+
+    <!--/******************************************************************************/-->
+
+
 </ResourceDictionary>
