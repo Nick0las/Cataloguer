@@ -63,7 +63,8 @@
                      Height="25"
                      Width="300"
                      VerticalAlignment="Center"
-                     HorizontalAlignment="Left"/>
+                     HorizontalAlignment="Left"
+                     Text="{Binding SurnameAuthor}"/>
 
             <TextBlock Grid.Row="1"
                        Margin="10,5,25,0"
@@ -81,7 +82,8 @@
                      Height="25"
                      Width="300"
                      VerticalAlignment="Center"
-                     HorizontalAlignment="Left"/>
+                     HorizontalAlignment="Left"
+                     Text="{Binding NameAuthor}"/>
 
             <TextBlock Grid.Row="2"
                        Margin="10,5,25,0"
@@ -99,7 +101,8 @@
                      Height="25"
                      Width="300"
                      VerticalAlignment="Center"
-                     HorizontalAlignment="Left"/>
+                     HorizontalAlignment="Left"
+                     Text="{Binding MidllenameAuthor}"/>
             <Button Grid.Row="8" 
                     Content="Сохранить"
                     Width="150"
@@ -108,7 +111,7 @@
                     HorizontalAlignment="Right"
                     VerticalAlignment="Bottom"
                     Style="{StaticResource CheckButtonStyle}"
-                    Command="{Binding AddNewBookCmd}">
+                    Command="{Binding AddNewAuthorCmd}">
             </Button>
             <Button Grid.Row="8" 
                     Content="Отменить"

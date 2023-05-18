@@ -27,32 +27,7 @@ namespace Cataloguer.ViewModels
         }
         #endregion
 
-        #region Свойства для передачи строковых данных из представления
-       
-        /// <summary>Фамилия автора</summary>
-        private string? surnameAuthor;
-        public string? SurnameAuthor
-        {
-            get => surnameAuthor;
-            set => Set(ref surnameAuthor, value);
-        }
-
-        /// <summary>Имя автора</summary>
-        private string nameAuthor;
-        public string NameAuthor
-        {
-            get => nameAuthor;
-            set => Set(ref nameAuthor, value);
-        }
-
-        /// <summary>Отчество автора</summary>
-        private string? midllenameAuthor;
-        public string? MidllenameAuthor
-        {
-            get => midllenameAuthor;
-            set => Set(ref midllenameAuthor, value);
-        }
-
+        #region Свойства для передачи строковых данных из представления       
         
         /// <summary>Название произведения</summary>
         private string titleBook;
@@ -108,9 +83,7 @@ namespace Cataloguer.ViewModels
             Book book = new();
             BookAuthor bookAuthor = new();
             
-            //проверка на корректный ввод данных ФИО автора через регулярные выражения
-            bool flag = ValidateEnterBookAuthor(bookAuthor, SurnameAuthor, NameAuthor, MidllenameAuthor);
-            if (flag == false) return;
+           
 
             book.Author = bookAuthor;
             book.Title = TitleBook;
@@ -154,49 +127,7 @@ namespace Cataloguer.ViewModels
             return String.Empty;
         }
 
-        /// <summary>Метод с использованием регулярных выражений на проверку корректности ввода ФИО автора</summary>        
-        private bool ValidateEnterBookAuthor(BookAuthor author, string surname, string name, string middleName)
-        {
-            /*проверка фамилии*/
-            if (!Regex.IsMatch(surname, @"^[a-zA-Zа-яА-Я]+$") || surname is null)
-            {
-                MessageBox.Show("Игнорируя предупреждения вы все таки допустили ошибку!", "Внимание! Исправьте Фамилию Автора!",
-                    MessageBoxButton.OK, MessageBoxImage.Warning);
-                return false;
-            }
-            else
-            {
-                author.Surname = surname;
-            }
-            /*проверка имени*/
-            if (!Regex.IsMatch(name, @"^[a-zA-Zа-яА-Я]+$") || name is null)
-            {
-                MessageBox.Show("Игнорируя предупреждения вы все таки допустили ошибку!", "Внимание! Исправьте Имя Автора!",
-                    MessageBoxButton.OK, MessageBoxImage.Warning);
-                return false;
-            }
-            else
-            {
-                author.Name = name;
-            }
-
-            /*проверка отчества*/
-            if(middleName != null)
-            {
-                if (!Regex.IsMatch(middleName, @"^[a-zA-Zа-яА-Я]+$"))
-                {
-                    MessageBox.Show("Игнорируя предупреждения вы все таки допустили ошибку!", "Внимание! Исправьте Отчество Автора!",
-                        MessageBoxButton.OK, MessageBoxImage.Warning);
-                    return false;
-                }
-                else
-                {
-                    author.MidleName = middleName;
-                }
-            }
-            return true;
-            
-        }
+        
 
         ///<summary>Метод на корректный ввод данных о годе издания книги</summary>
         private  bool ValidateEnterYearPublicationBook(Book _book,string yearPublicationBook)
