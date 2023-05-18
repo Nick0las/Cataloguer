@@ -6,6 +6,7 @@
         xmlns:l="clr-namespace:Cataloguer.Views"
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:b="clr-namespace:Cataloguer.Resources.Behaviors"
+        xmlns:cmd="clr-namespace:Cataloguer.Commands"
         xmlns:res="clr-namespace:Cataloguer.Resources"
         xmlns:vm="clr-namespace:Cataloguer.ViewModels"
         xmlns:model="clr-namespace:Cataloguer.Models"
@@ -46,7 +47,7 @@
         <Grid DockPanel.Dock="Top">
             <Grid.RowDefinitions>
                 <RowDefinition Height="25"/>
-                <RowDefinition Height="60"/>
+                <RowDefinition Height="35"/>
                 <RowDefinition Height="25"/>
                 <RowDefinition Height="40"/>
                 <RowDefinition Height="25"/>
@@ -72,7 +73,11 @@
                       HorizontalAlignment="Left"
                       Width="250"
                       Margin="100,0,0,0"
-                      ItemsSource="{Binding Source={x:Static serv:Collections.BookAuthorCollection}}">
+                      ItemsSource="{Binding Source={x:Static serv:Collections.BookAuthorCollection}}"
+                      SelectedIndex="{Binding SelectedAuthor}"                      
+                      IsTextSearchEnabled="True"
+                      IsEditable="True"
+                      ScrollViewer.CanContentScroll="True">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock>
@@ -83,63 +88,32 @@
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
-            <TextBlock Grid.Row="1"
-                       Margin="10,5,25,0"
-                       Text="Фамилия:"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Top"
-                       Height="20"
-                       FontWeight="Normal"
-                       FontStyle="Normal"
-                       FontFamily="Monotype Corsiva"
-                       FontSize="20"
-                       Foreground="Gold"/>
-            <TextBox Grid.Row="1"
-                     Margin="10,15,10,0"
-                     Height="25"
-                     Width="200"
-                     VerticalAlignment="Center"
-                     HorizontalAlignment="Left"
-                     Text="{Binding SurnameAuthor}"/>
 
             <TextBlock Grid.Row="1"
-                       Margin="0,5,165,0"
-                       Text="Имя:"
-                       HorizontalAlignment="Center"
-                       VerticalAlignment="Top"
-                       Height="20"
-                       FontWeight="Normal"
-                       FontStyle="Normal"
-                       FontFamily="Monotype Corsiva"
-                       FontSize="20"
-                       Foreground="Gold"/>
-            <TextBox Grid.Row="1"
-                     Margin="10,15,10,0"
-                     Height="25"
-                     Width="200"
-                     VerticalAlignment="Center"
-                     HorizontalAlignment="Center"
-                     Text="{Binding NameAuthor}"/>
-
-            <TextBlock Grid.Row="1"
-                       Margin="0,5,125,0"
-                       Text="Отчество:"
-                       Width="85"
+                       Text="Не нашелся автор? Добавим нового!"
                        HorizontalAlignment="Right"
                        VerticalAlignment="Top"
-                       Height="20"
+                       Margin="10,0,150,0"
+                       Height="20"                       
                        FontWeight="Normal"
                        FontStyle="Normal"
                        FontFamily="Monotype Corsiva"
                        FontSize="20"
                        Foreground="Gold"/>
-            <TextBox Grid.Row="1"
-                     Margin="10,15,10,0"
-                     Height="25"
-                     Width="200"
-                     VerticalAlignment="Center"
-                     HorizontalAlignment="Right"
-                     Text="{Binding MidllenameAuthor}"/>
+            <Button Grid.Row="1"
+                    Content="Новый Автор"
+                    Margin="20,0,20,0"
+                    HorizontalAlignment="Right"
+                    Width="120"
+                    Height="30"
+                    Style="{StaticResource AddButtonStyle}"                    
+                    Foreground="#ff00a7">
+                <Button.Command>
+                    <cmd:OpenAddNewAuthorWinCmd/>
+                </Button.Command>
+            </Button>
+
+
 
             <TextBlock Grid.Row="2"
                        Text="Название"

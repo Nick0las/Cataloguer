@@ -2,12 +2,6 @@
 using Cataloguer.Resources.Interfaces;
 using Cataloguer.Services;
 using Cataloguer.ViewModels.ViewModel_Base;
-using OxyPlot;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Linq;
-using System.Windows.Data;
 
 
 

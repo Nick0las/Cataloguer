@@ -53,6 +53,7 @@ namespace Cataloguer.ViewModels
             set => Set(ref midllenameAuthor, value);
         }
 
+        
         /// <summary>Название произведения</summary>
         private string titleBook;
         public string TitleBook
@@ -84,6 +85,17 @@ namespace Cataloguer.ViewModels
             set => Set(ref contentBook, value);
         }
 
+
+        #endregion
+
+        #region Свойства для ComboBox выбор автора
+        /// <summary>выбранный автор из ComboBox</summary>
+        private BookAuthor selectedAutor;
+        public BookAuthor SelectedAuthor
+        {
+            get => selectedAutor;
+            set => Set(ref selectedAutor, value);
+        }
 
         #endregion
 

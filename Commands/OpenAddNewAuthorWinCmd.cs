@@ -5,13 +5,13 @@ using System.Windows;
 
 namespace Cataloguer.Commands
 {
-    internal class OpenWinAddNewBookCmd : BaseCommand
+    internal class OpenAddNewAuthorWinCmd : BaseCommand
     {
-        private AddNewBookWindow _Window;
+        private AddNewAuthorWindow _Window;
         public override bool CanExecute(object parameter) => _Window == null;
         public override void Execute(object parameter)
         {
-            AddNewBookWindow window = new AddNewBookWindow
+            AddNewAuthorWindow window = new AddNewAuthorWindow
             {
                 Owner = Application.Current.MainWindow
             };
