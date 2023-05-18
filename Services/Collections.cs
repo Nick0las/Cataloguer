@@ -12,6 +12,6 @@ namespace Cataloguer.Services
           
         public static List<Book>BooksICollections { get; set; } = new List<Book>();
 
-        public static List<BookAuthor> BookAuthorCollection { get; set; } = new();
+        public static ObservableCollection<BookAuthor> BookAuthorCollection { get; set; } = new();
     }
 }

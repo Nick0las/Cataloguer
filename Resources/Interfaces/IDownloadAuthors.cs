@@ -8,7 +8,7 @@ namespace Cataloguer.Resources.Interfaces
 {
     internal interface IDownloadAuthors
     {
-        internal static void ShowAuthors(List<BookAuthor> authors)
+        internal static void ShowAuthors(ObservableCollection<BookAuthor> authors)
         {
             //строка запроса на выборку всех авторов из БД
             string sqlQuery = "SELECT * FROM BookAuthor ORDER BY SurnameAuthor ASC";

@@ -1,11 +1,14 @@
 ﻿using Cataloguer.Commands;
 using Cataloguer.Models;
+using Cataloguer.Services;
 using Cataloguer.ViewModels.ViewModel_Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace Cataloguer.ViewModels
@@ -59,6 +62,7 @@ namespace Cataloguer.ViewModels
             //проверка на корректный ввод данных ФИО автора через регулярные выражения
             bool flag = ValidateEnterBookAuthor(bookAuthor, SurnameAuthor, NameAuthor, MidllenameAuthor);
             if (flag == false) return;
+            Collections.BookAuthorCollection.Add(bookAuthor);
         }
 
        
