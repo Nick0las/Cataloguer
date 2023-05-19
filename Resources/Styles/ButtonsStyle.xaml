@@ -182,7 +182,7 @@
                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                        Margin="{TemplateBinding Padding}">
                 <fa:ImageAwesome x:Name="IconAddBook" Height="12" 
-                                 Icon="Solid_BookOpen" 
+                                 Icon="Solid_BookMedical" 
                                  Foreground="Cyan" 
                                  Margin="0,0,3,0"
                                  Effect="{StaticResource ShadowDepth1}"/>
