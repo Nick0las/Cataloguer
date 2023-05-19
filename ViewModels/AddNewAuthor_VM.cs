@@ -1,6 +1,7 @@
 ﻿using Cataloguer.Commands;
 using Cataloguer.Models;
 using Cataloguer.Services;
+using Cataloguer.ViewModels.ValidatableViewModelBase;
 using Cataloguer.ViewModels.ViewModel_Base;
 using System;
 using System.Collections.Generic;
@@ -13,7 +14,7 @@ using System.Windows.Input;
 
 namespace Cataloguer.ViewModels
 {
-    internal class AddNewAuthor_VM : BaseViewModel
+    internal class AddNewAuthor_VM : ValidatableVMBase
     {
         #region заголовок окна
         private string title = "+1 автор в каталоге!";
@@ -28,8 +29,8 @@ namespace Cataloguer.ViewModels
         #region Свойства для передачи строковых данных из представления
 
         /// <summary>Фамилия автора</summary>
-        private string? surnameAuthor;
-        public string? SurnameAuthor
+        private string surnameAuthor;
+        public string SurnameAuthor
         {
             get => surnameAuthor;
             set => Set(ref surnameAuthor, value);
@@ -121,6 +122,46 @@ namespace Cataloguer.ViewModels
             }
             return true;
 
+        }
+
+
+        /// <summary>переопределенный метод проверки на валидность введенной пользователем информации.</summary>
+        protected override string Validate(string columnName)
+        {
+            if (columnName == nameof(SurnameAuthor))
+            {
+                if (String.IsNullOrWhiteSpace(SurnameAuthor))
+                {
+                    return "Поле 'Фамилия' не может быть пустым";
+                }
+                if (!Regex.IsMatch(SurnameAuthor, @"^[a-zA-Zа-яА-Я]+$"))
+                {
+                    return "В поле 'Фамилия' допускается ввод только букв!";
+                }
+            }
+
+            if (columnName == nameof(NameAuthor))
+            {
+                if (String.IsNullOrWhiteSpace(NameAuthor))
+                {
+                    return "Поле 'Имя' не может быть пустым";
+                }
+                if (!Regex.IsMatch(NameAuthor, @"^[a-zA-Zа-яА-Я]+$"))
+                {
+                    return "В поле 'Имя' допускается ввод только букв!";
+                }
+            }
+
+            if (columnName == nameof(MidllenameAuthor) && MidllenameAuthor != null)
+            {
+               
+                if (!Regex.IsMatch(MidllenameAuthor, @"^[a-zA-Zа-яА-Я]+$"))
+                {
+                    return "В  поле 'Отчество' допускается только ввод букв!";
+                }
+            }
+
+            return String.Empty;
         }
     }
 }

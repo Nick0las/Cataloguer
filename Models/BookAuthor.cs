@@ -18,5 +18,9 @@ namespace Cataloguer.Models
 
         /// <summary>Отчество автора книги</summary>
         public string? MidleName { get; set; }
+        /// <summary>Прокси свойство для передачи в ComboBox</summary>
+        public string FullName => $"{Surname} {Name} {MidleName}";
+        
+
     }
 }

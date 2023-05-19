@@ -74,19 +74,11 @@
                       Width="250"
                       Margin="100,0,0,0"
                       ItemsSource="{Binding Source={x:Static serv:Collections.BookAuthorCollection}}"
-                      SelectedIndex="{Binding SelectedAuthor}"                      
+                      SelectedItem="{Binding SelectedAuthor}"
+                      DisplayMemberPath="FullName"
                       IsTextSearchEnabled="True"
                       IsEditable="True"
                       ScrollViewer.CanContentScroll="True">
-                <ComboBox.ItemTemplate>
-                    <DataTemplate>
-                        <TextBlock>
-                            <Run Text="{Binding Name}"/>
-                            <Run Text="{Binding MidleName}"/>
-                            <Run Text="{Binding Surname}"/>
-                        </TextBlock>
-                    </DataTemplate>
-                </ComboBox.ItemTemplate>
             </ComboBox>
 
             <TextBlock Grid.Row="1"

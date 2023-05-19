@@ -82,9 +82,7 @@ namespace Cataloguer.ViewModels
         {   
             Book book = new();
             BookAuthor bookAuthor = new();
-            
-           
-
+            bookAuthor = SelectedAuthor;
             book.Author = bookAuthor;
             book.Title = TitleBook;
             book.Genre = (LiteraryGenres)SelectedGenres;
@@ -95,9 +93,6 @@ namespace Cataloguer.ViewModels
 
             book.Content = ContentBook;
             Collections.BooksObsCollection.Add(book);
-
-            
-
         }
         #endregion
 
