@@ -54,32 +54,57 @@
                       Height="23"
                       FontFamily="Segoe UI Semibold"
                       FontWeight="Bold">
-                <MenuItem Header="Добавить автора"
+                <MenuItem Header="Добавить"
                           FontWeight="Normal"
                           FontStyle="Normal"
                           FontFamily="Monotype Corsiva"
                           FontSize="14"
                           Foreground="Gold">
-                    <MenuItem.Command>
-                        <cmd:OpenAddNewAuthorWinCmd/>
-                    </MenuItem.Command>
+                    <MenuItem Header="Книгу"
+                          FontWeight="Normal"
+                          FontStyle="Normal"
+                          FontFamily="Monotype Corsiva"
+                          FontSize="14"
+                          Foreground="Gold">
+                        <MenuItem.Command>
+                            <cmd:OpenWinAddNewBookCmd/>
+                        </MenuItem.Command>
+                    </MenuItem>
+                    <MenuItem Header="Автора"
+                          FontWeight="Normal"
+                          FontStyle="Normal"
+                          FontFamily="Monotype Corsiva"
+                          FontSize="14"
+                          Foreground="Gold">
+                        <MenuItem.Command>
+                            <cmd:OpenAddNewAuthorWinCmd/>
+                        </MenuItem.Command>
+                    </MenuItem>
                 </MenuItem>
-                <MenuItem Header="Добавить новую книгу"
+                <MenuItem Header="Редактировать"
+                      FontWeight="Normal"
+                          FontStyle="Normal"
+                          FontFamily="Monotype Corsiva"
+                          FontSize="14"
+                          Foreground="Gold">
+                    <MenuItem Header="Книгу"
                           FontWeight="Normal"
                           FontStyle="Normal"
                           FontFamily="Monotype Corsiva"
                           FontSize="14"
                           Foreground="Gold">
-                    <MenuItem.Command>
-                        <cmd:OpenWinAddNewBookCmd/>
-                    </MenuItem.Command>
-                </MenuItem>
-                <MenuItem Header="Редактировать книгу"
+                        <MenuItem.Command>
+                            <cmd:OpenEditBookWinCmd/>
+                        </MenuItem.Command>
+                    </MenuItem>
+                    <MenuItem Header="Автора"
                           FontWeight="Normal"
                           FontStyle="Normal"
                           FontFamily="Monotype Corsiva"
                           FontSize="14"
                           Foreground="Gold">
+                        
+                    </MenuItem>
                 </MenuItem>
                 <MenuItem Header="Сохранить"
                           FontWeight="Normal"
@@ -96,6 +121,11 @@
                           Foreground="Gold">
                 </MenuItem>
             </MenuItem>
+
+            
+            
+            
+                
             <MenuItem Header="Помощь"
                       VerticalAlignment="Center"
                       HorizontalAlignment="Stretch"
