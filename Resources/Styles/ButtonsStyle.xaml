@@ -170,7 +170,7 @@
     </Style>
     <!--/******************************************************************************/-->
 
-    <!--/******************************************************************************/-->
+    <!--/******************* Кнопка "добавить новую книгу" ***********************************************************/-->
     <ControlTemplate x:Key="AddButtonTemplate" TargetType="{x:Type Button}">
         <Border x:Name="border"
                 CornerRadius="5"
@@ -181,7 +181,7 @@
             <DockPanel HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                        Margin="{TemplateBinding Padding}">
-                <fa:ImageAwesome x:Name="IconCheck" Height="12" 
+                <fa:ImageAwesome x:Name="IconAddBook" Height="12" 
                                  Icon="Solid_BookOpen" 
                                  Foreground="Cyan" 
                                  Margin="0,0,3,0"
@@ -199,7 +199,7 @@
             <Trigger Property="IsMouseOver" Value="true">
                 <Setter Property="Background" TargetName="border" Value="Gold"/>
                 <Setter Property="BorderBrush" TargetName="border" Value="Gold"/>
-                <Setter TargetName="IconCheck" Property="Foreground" Value="Cyan"/>
+                <Setter TargetName="IconAddBook" Property="Foreground" Value="Cyan"/>
                 <Setter Property="Foreground" Value="White"/>
             </Trigger>
             <Trigger Property="IsPressed" Value="true">
@@ -227,5 +227,59 @@
 
     <!--/******************************************************************************/-->
 
+    <!--/******************* Кнопка "добавить нового автора" ***********************************************************/-->
+    <ControlTemplate x:Key="AddAuthorButtonTemplate" TargetType="{x:Type Button}">
+        <Border x:Name="border"
+                CornerRadius="5"
+                Background="{TemplateBinding Background}" 
+                BorderBrush="{TemplateBinding BorderBrush}" 
+                BorderThickness="{TemplateBinding BorderThickness}" 
+                SnapsToDevicePixels="true">
+            <DockPanel HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                       VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                       Margin="{TemplateBinding Padding}">
+                <fa:ImageAwesome x:Name="IconAddAuthor" Height="12" 
+                                 Icon="Solid_UserPlus" 
+                                 Foreground="Cyan" 
+                                 Margin="0,0,3,0"
+                                 Effect="{StaticResource ShadowDepth1}"/>
+                <ContentPresenter x:Name="contentPresenter" 
+                              Focusable="False"
+                              RecognizesAccessKey="True" 
+                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+            </DockPanel>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsDefaulted" Value="true">
+                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property="Background" TargetName="border" Value="Gold"/>
+                <Setter Property="BorderBrush" TargetName="border" Value="Gold"/>
+                <Setter TargetName="IconAddAuthor" Property="Foreground" Value="Cyan"/>
+                <Setter Property="Foreground" Value="White"/>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="true">
+                <Setter Property="Background" TargetName="border" Value="#FFB8860B"/>
+                <Setter Property="BorderBrush" TargetName="border" Value="Black"/>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="false">
+                <Setter Property="BorderBrush" TargetName="border" Value="DarkGray"/>
+                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="#ff00a7"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <Style x:Key="AddAuthorButtonStyle" TargetType="{x:Type Button}">
+        <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+        <Setter Property="Background" Value="Gold"/>
+        <Setter Property="BorderBrush" Value="Red"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Padding" Value="1"/>
+        <Setter Property="Template" Value="{StaticResource AddAuthorButtonTemplate}">
+        </Setter>
+    </Style>
 
 </ResourceDictionary>
