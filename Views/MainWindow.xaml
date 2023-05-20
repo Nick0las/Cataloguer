@@ -231,6 +231,10 @@
                         </Style>
                     </DataGrid.RowStyle>                    
                     <DataGrid.Columns>
+                        <DataGridTextColumn Header="IdBook"
+                                            Binding="{Binding Id}"/>
+                        <DataGridTextColumn Header="IdАвтор"
+                                            Binding="{Binding Author.Id}"/>
                         <DataGridTextColumn MinWidth ="130"
                                         Width="auto"
                                         Header="Фамилия"

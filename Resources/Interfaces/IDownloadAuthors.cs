@@ -21,7 +21,7 @@ namespace Cataloguer.Resources.Interfaces
             while (sqliteDataReader.Read())
             {
                 BookAuthor author = new ();
-                author.IdAuhtor = sqliteDataReader.GetInt32(0);
+                author.Id = sqliteDataReader.GetInt32(0);
                 author.Surname = sqliteDataReader.GetString(1);
                 author.Name = sqliteDataReader.GetString(2);
                 author.MidleName = sqliteDataReader.GetString(3);

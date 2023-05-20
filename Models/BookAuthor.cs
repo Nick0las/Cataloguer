@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Cataloguer.Models.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace Cataloguer.Models
 {
-    internal class BookAuthor
+    internal class BookAuthor : IEntity
     {
         /// <summary>ID автора книги</summary>
-        public int? IdAuhtor { get; set; }
+        public int? Id { get; set; }
         /// <summary>Фамилия автора книги</summary>
         public string Surname { get; set; }
 
