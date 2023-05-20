@@ -15,7 +15,7 @@ namespace Cataloguer.Resources.Interfaces
 
         T Get(int id) => GetAll().FirstOrDefault(item => item.Id == id);
 
-        void Remove(T item);
+        bool Remove(T item);
 
         void Update(int id, T item);
     }
