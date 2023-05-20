@@ -1,9 +1,11 @@
-﻿using Cataloguer.Models;
+﻿using Cataloguer.Commands;
+using Cataloguer.Models;
 using Cataloguer.Resources.Interfaces;
 using Cataloguer.Services;
 using Cataloguer.ViewModels.ViewModel_Base;
-
-
+using Cataloguer.Views;
+using System.Collections.ObjectModel;
+using System.Windows.Input;
 
 namespace Cataloguer.ViewModels
 {
@@ -24,7 +26,7 @@ namespace Cataloguer.ViewModels
         //public ObservableCollection<Book> BooksObsCollection { get; }
         #endregion
 
-        #region Свойство для выделенной строки в DataGrid
+        #region Свойства для выделенной строки в DataGrid
         /*Свойство для выбора книги*/
         private Book selectedBook;
         public Book SelectedBook 
@@ -34,15 +36,25 @@ namespace Cataloguer.ViewModels
             
         }
         /*--------------------------------------------------------------------------------------------------------------*/
+        private int? selectedBookIndex = null;
+        public int? SelectedBookIndex
+        {
+            get => selectedBookIndex;
+            set => Set(ref selectedBookIndex, value);
+
+        }
+
         #endregion
 
-
+       
 
 
         //конструктор
         public MainWindow_VM()
-        {
+        {   
             IDownloadAllBooks.ShowBooks(Collections.BooksObsCollection);
         }
+
+        
     }
 }

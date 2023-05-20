@@ -14,7 +14,7 @@
         WindowStartupLocation="CenterScreen">
     <Window.DataContext>
         <vm:MainWindow_VM/>
-    </Window.DataContext>    
+    </Window.DataContext>
     <DockPanel Background="Black">
         <StackPanel DockPanel.Dock="Top">
             <TextBlock FontSize="45"
@@ -88,11 +88,11 @@
                           FontSize="14"
                           Foreground="Gold">
                     <MenuItem Header="Книгу"
-                          FontWeight="Normal"
-                          FontStyle="Normal"
-                          FontFamily="Monotype Corsiva"
-                          FontSize="14"
-                          Foreground="Gold">
+                              FontWeight="Normal"
+                              FontStyle="Normal"
+                              FontFamily="Monotype Corsiva"
+                              FontSize="14"
+                              Foreground="Gold">
                         <MenuItem.Command>
                             <cmd:OpenEditBookWinCmd/>
                         </MenuItem.Command>
@@ -121,11 +121,6 @@
                           Foreground="Gold">
                 </MenuItem>
             </MenuItem>
-
-            
-            
-            
-                
             <MenuItem Header="Помощь"
                       VerticalAlignment="Center"
                       HorizontalAlignment="Stretch"
@@ -158,7 +153,8 @@
                     <cmd:OpenAddNewAuthorWinCmd/>
                 </Button.Command>
             </Button>
-            <fa:ImageAwesome Height="16" Icon="Solid_Search" 
+            <fa:ImageAwesome Height="16" 
+                             Icon="Solid_Search"                             
                              Foreground="Gold"
                              Margin="5"/>
             <TextBlock Text="Жанры"
@@ -167,17 +163,6 @@
                        HorizontalAlignment="Right"
                        VerticalAlignment="Center"
                        Margin="2,0,5,0"/>
-            <TextBox Width="200"
-                     Margin="5"/>
-            <ComboBox Width="150"
-                      Background="LightGray"
-                      ItemsSource="{Binding BooksOnlyGenres}">
-                <ComboBox.ItemTemplate>
-                    <DataTemplate>
-                        <TextBlock Text="{Binding Genre}"/>
-                    </DataTemplate>
-                </ComboBox.ItemTemplate>
-                </ComboBox>
         </ToolBar>
         <StatusBar DockPanel.Dock="Bottom" 
                    Height="25" 
@@ -225,6 +210,7 @@
                           FontWeight="Normal"
                           ItemsSource="{Binding Source={x:Static serv:Collections.BooksObsCollection}}"
                           SelectedItem="{Binding SelectedBook}"
+                          SelectedIndex="{Binding SelectedBookIndex}"
                           Background="LightSlateGray">
                     <DataGrid.Resources>
                         <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">

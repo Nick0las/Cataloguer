@@ -7,6 +7,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 
 namespace Cataloguer.ViewModels
 {
@@ -60,12 +61,22 @@ namespace Cataloguer.ViewModels
 
         #endregion
 
+        #region Команды
+        public ICommand EditBookCmd { get; }
+        private bool CanEditBookCmdExecute(object p) => true;
+        private void OnEditBookCmdExecuted(object p)
+        {
+            
+        }
+
+        #endregion
+
 
 
 
         public EditBook_VM()
         {
-
+            EditBookCmd = new LamdaCommand(OnEditBookCmdExecuted, CanEditBookCmdExecute);
         }
 
 
