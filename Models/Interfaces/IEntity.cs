@@ -8,6 +8,6 @@ namespace Cataloguer.Models.Interfaces
 {
     public interface IEntity
     {
-        int Id { get; set; }
+        int? Id { get; set; }
     }
 }

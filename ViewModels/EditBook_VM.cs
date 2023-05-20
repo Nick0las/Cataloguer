@@ -1,4 +1,5 @@
-﻿using Cataloguer.Models;
+﻿using Cataloguer.Commands;
+using Cataloguer.Models;
 using Cataloguer.ViewModels.ValidatableViewModelBase;
 using System;
 using System.Collections.Generic;

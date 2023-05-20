@@ -1,11 +1,13 @@
-﻿using System;
+﻿using Cataloguer.Models.Interfaces;
+using System;
 
 
 
 namespace Cataloguer.Models
 {
-    internal class Book 
+    internal class Book : IEntity 
     {
+        public int? Id { get; set; }
         public BookAuthor? Author { get; set; }
         
         ///<summary>автор книги</summary>
