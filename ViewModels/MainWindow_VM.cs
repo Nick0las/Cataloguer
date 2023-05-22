@@ -5,6 +5,7 @@ using Cataloguer.Services;
 using Cataloguer.ViewModels.ViewModel_Base;
 using Cataloguer.Views;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows.Input;
 
 namespace Cataloguer.ViewModels
@@ -22,8 +23,8 @@ namespace Cataloguer.ViewModels
         }
         #endregion
 
-        #region Свойство ObservableCollection, для отображения коллекции в DataGrid
-        //public ObservableCollection<Book> BooksObsCollection { get; }
+        #region Свойство ObservableCollection, для отображения книг в DataGrid
+        public ObservableCollection<Book> BooksObsCollection { get; }
         #endregion
 
         #region Свойства для выделенной строки в DataGrid
@@ -32,8 +33,7 @@ namespace Cataloguer.ViewModels
         public Book SelectedBook 
         {
             get => selectedBook;
-            set => Set(ref selectedBook, value); 
-            
+            set => Set(ref selectedBook, value);
         }
         /*--------------------------------------------------------------------------------------------------------------*/
         private int? selectedBookIndex = null;
@@ -51,7 +51,9 @@ namespace Cataloguer.ViewModels
 
         //конструктор
         public MainWindow_VM()
-        {   
+        {
+            //BooksObsCollection = new ObservableCollection<Book>();
+            
             IDownloadAllBooks.ShowBooks(Collections.BooksObsCollection);
         }
 

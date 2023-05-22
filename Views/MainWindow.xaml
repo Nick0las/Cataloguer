@@ -129,11 +129,11 @@
                       FontWeight="Bold">
                 </MenuItem>
         </Menu>
-        <ToolBar DockPanel.Dock="Top"                 
+        <ToolBar DockPanel.Dock="Top"
+                 Margin="0,10,0,10"
                  Foreground="Gold"
                  Height="36"                 
                  Background="Black">
-            <Separator/>
             <Button Width="100"
                     Height="30"
                     Style="{StaticResource AddButtonStyle}"
@@ -153,6 +153,7 @@
                     <cmd:OpenAddNewAuthorWinCmd/>
                 </Button.Command>
             </Button>
+            <Separator HorizontalAlignment="Left"/>
             
             <fa:ImageAwesome Height="16" 
                              Icon="Solid_Search"                             
@@ -186,95 +187,137 @@
         <Grid DockPanel.Dock="Left"
               VerticalAlignment="Stretch"
               HorizontalAlignment="Stretch"
-              Background="LightSlateGray">
+              Background="DarkSlateGray">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="2*"/>
                 <ColumnDefinition Width="7*"/>
             </Grid.ColumnDefinitions>
-            <GroupBox Header="{Binding SelectedBook.Title, FallbackValue='Книга', TargetNullValue='Книга не выбрана'}"
-                      Grid.Column="0"
-                      Margin="5,5,2,2"
-                      Foreground="Gold"
-                      FontWeight="Bold"
-                      FontSize="14"
-                      BorderBrush="Yellow">
-                <TextBox Text="{Binding SelectedBook.Content}"
-                         Background="LightSlateGray"
-                         Foreground="White"
-                         TextWrapping="Wrap"
-                         FontSize="12"
-                         IsReadOnly="True">
-                </TextBox>
-            </GroupBox>
-            <GroupBox Header="Каталог"
-                      Grid.Column="1"
+            <DockPanel Grid.Column="1"
+                       VerticalAlignment="Stretch"
+                       HorizontalAlignment="Stretch">
+                <Grid DockPanel.Dock="Top"
+                      VerticalAlignment="Stretch"
+                      HorizontalAlignment="Stretch">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="7*"/>
+                        <RowDefinition Height="3*"/>
+                    </Grid.RowDefinitions>
+                    <GroupBox Header="Каталог"
+                      Grid.Row="0"
                       Margin="2,5,5,2"
                       Foreground="Gold"
                       FontWeight="Bold"
                       FontSize="14"
                       BorderBrush="Yellow">
-                <DataGrid x:Name="DataGridCollection" AutoGenerateColumns="False"
-                          CanUserReorderColumns="False"
-                          CanUserAddRows="False"
-                          CanUserResizeColumns="False"
-                          CanUserResizeRows="False"
-                          IsReadOnly="True"
-                          GridLinesVisibility="Vertical"
-                          VerticalGridLinesBrush="DarkGray"
-                          BorderThickness="2"
-                          FontWeight="Normal"
-                          ItemsSource="{Binding Source={x:Static serv:Collections.BooksObsCollection}}"
-                          SelectedItem="{Binding SelectedBook}"
-                          SelectedIndex="{Binding SelectedBookIndex}"
-                          Background="LightSlateGray">
-                    <DataGrid.Resources>
-                        <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
-                            <Setter Property="Background" Value="LightSlateGray" />
-                            <Setter Property="Foreground" Value="White"/>
-                        </Style>
-                    </DataGrid.Resources>
-                    <DataGrid.RowStyle>
-                        <Style TargetType="DataGridRow">
-                            <Setter Property="Background" Value="LightSlateGray"/>
-                            <Setter Property="Foreground" Value="White"/>
-                            <Style.Triggers>
-                                <DataTrigger Binding="{Binding Genre}" Value="роман">
-                                    <Setter Property="Background" Value="LightCyan"/>
-                                    <Setter Property="Foreground" Value="Red"/>
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </DataGrid.RowStyle>                    
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="IdBook"
+                        <DockPanel DockPanel.Dock="Top">
+                            <DockPanel.Resources>
+                                <CollectionViewSource x:Key="CollectionsBooksByGenre"
+                                                      Source="{Binding Source={x:Static serv:Collections.BooksObsCollection}}"
+                                                      Filter="BooksCollectionsFilter"/>
+                            </DockPanel.Resources>
+                            <DockPanel DockPanel.Dock="Top">
+                                <fa:ImageAwesome Height="16"
+                                                 HorizontalAlignment="Left"
+                                                 Icon="Solid_Search"
+                                                 Foreground="Gold"
+                                                 Margin="5"/>
+                                <TextBlock Text="Год издания"
+                                           HorizontalAlignment="Left"
+                                           FontSize="14"
+                                           Foreground="Gold"
+                                           VerticalAlignment="Center"
+                                           Margin="2,0,5,0"/>
+                                <TextBox Name="TextBoxGenreFilter"
+                                         HorizontalAlignment="Left"
+                                         Width="200"
+                                         TextChanged="OnTitleFilterTextChanged"/>
+                            </DockPanel>
+                            <DataGrid x:Name="DataGridCollection"
+                                          AutoGenerateColumns="False"
+                                          CanUserReorderColumns="False"
+                                          CanUserAddRows="False"
+                                          CanUserResizeColumns="False"
+                                          CanUserResizeRows="False"
+                                          IsReadOnly="True"
+                                          GridLinesVisibility="Vertical"                                          
+                                          BorderThickness="2"
+                                          FontWeight="Normal"
+                                          ItemsSource="{Binding Source={StaticResource CollectionsBooksByGenre}}"
+                                          SelectedItem="{Binding SelectedBook}"
+                                          SelectedIndex="{Binding SelectedBookIndex}"
+                                          Background="DarkSlateGray">
+                                    <DataGrid.Resources>
+                                        <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
+                                        <Setter Property="Background" Value="DarkSlateGray" />
+                                            <Setter Property="Foreground" Value="White"/>
+                                        </Style>
+                                    </DataGrid.Resources>
+                                    <DataGrid.RowStyle>
+                                        <Style TargetType="DataGridRow">
+                                        <Setter Property="Background" Value="DarkSlateGray"/>
+                                            <Setter Property="Foreground" Value="White"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding Genre}" Value="роман">
+                                                    <Setter Property="Background" Value="LightCyan"/>
+                                                    <Setter Property="Foreground" Value="Red"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </DataGrid.RowStyle>
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="IdBook"
                                             Binding="{Binding Id}"/>
-                        <DataGridTextColumn Header="IdАвтор"
+                                        <DataGridTextColumn Header="IdАвтор"
                                             Binding="{Binding Author.Id}"/>
-                        <DataGridTextColumn MinWidth ="130"
+                                        <DataGridTextColumn MinWidth ="130"
                                         Width="auto"
                                         Header="Фамилия"
                                         Binding="{Binding Author.Surname}"/>
-                        <DataGridTextColumn MinWidth ="130"
+                                        <DataGridTextColumn MinWidth ="130"
                                         Width="auto"
                                         Header="Имя"
                                         Binding="{Binding Author.Name}"/>
-                        <DataGridTextColumn MinWidth ="130"
+                                        <DataGridTextColumn MinWidth ="130"
                                         Width="auto"
                                         Header="Отчество"
                                         Binding="{Binding Author.MidleName}"/>
-                        <DataGridTextColumn Width="2*"
+                                        <DataGridTextColumn Width="2*"
                                         Header="Название"
                                         Binding="{Binding Title}"/>
-                        <DataGridTextColumn Width="1*"
+                                        <DataGridTextColumn Width="1*"
                                         Header="Тематика"
                                         Binding="{Binding Genre}"/>
-                        
-                        <DataGridTextColumn Width="*"
+
+                                        <DataGridTextColumn Width="*"
                                         Header="Год издания"
                                         Binding="{Binding YearPublication}"/>
-                    </DataGrid.Columns>                    
-                </DataGrid>
-            </GroupBox>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                        </DockPanel>
+                    </GroupBox>
+                    <DockPanel Grid.Row="1">
+                        <GroupBox Header="{Binding SelectedBook.Title, FallbackValue='Книга', TargetNullValue='Книга не выбрана'}"
+                      Grid.Row="1"
+                      Margin="5,5,2,2"
+                      Foreground="Gold"
+                      FontWeight="Bold"
+                      FontSize="14"
+                      BorderBrush="Yellow">
+                            <TextBox Text="{Binding SelectedBook.Content}"
+                                     Background="DarkSlateGray"
+                                     Foreground="White"
+                                     TextWrapping="Wrap"
+                                     FontSize="14"
+                                     IsReadOnly="True"
+                                     FontFamily="Yu Gothic UI">
+                            </TextBox>
+                        </GroupBox>
+                    </DockPanel>
+                    
+                </Grid>
+            </DockPanel>
+            
+            
         </Grid>
     </DockPanel>
 </Window>

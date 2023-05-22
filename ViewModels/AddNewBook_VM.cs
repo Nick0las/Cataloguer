@@ -92,7 +92,7 @@ namespace Cataloguer.ViewModels
             if(flagYear == false) return;
 
             book.Content = ContentBook;
-            Collections.BooksObsCollection.Add(book);
+            //Collections.BooksObsCollection.Add(book);
         }
         #endregion
 

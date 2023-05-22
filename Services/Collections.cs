@@ -9,9 +9,7 @@ namespace Cataloguer.Services
     {
         /// <summary> для хранения коллекции</summary>
         public static ObservableCollection<Book> BooksObsCollection { get; set; } = new();
-          
-        public static List<Book>BooksICollections { get; set; } = new List<Book>();
-
+        
         public static ObservableCollection<BookAuthor> BookAuthorCollection { get; set; } = new();
     }
 }
