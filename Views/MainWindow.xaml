@@ -194,11 +194,7 @@
               VerticalAlignment="Stretch"
               HorizontalAlignment="Stretch"
               Background="DarkSlateGray">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2*"/>
-                <ColumnDefinition Width="7*"/>
-            </Grid.ColumnDefinitions>
-            <DockPanel Grid.Column="1"
+            <DockPanel Grid.Column="0"
                        VerticalAlignment="Stretch"
                        HorizontalAlignment="Stretch">
                 <Grid DockPanel.Dock="Top"
@@ -209,12 +205,13 @@
                         <RowDefinition Height="3*"/>
                     </Grid.RowDefinitions>
                     <GroupBox Header="Каталог"
-                      Grid.Row="0"
-                      Margin="2,5,5,2"
-                      Foreground="Gold"
-                      FontWeight="Bold"
-                      FontSize="14"
-                      BorderBrush="Yellow">
+                              Grid.Row="0"
+                              Margin="2,5,5,2"
+                              Foreground="Gold"
+                              FontWeight="Bold"
+                              FontSize="14"
+                              BorderBrush="Yellow"
+                              BorderThickness="2">
                         <DockPanel DockPanel.Dock="Top"> 
                             <DataGrid x:Name="DataGridCollection"
                                           AutoGenerateColumns="False"
@@ -281,12 +278,13 @@
                     </GroupBox>
                     <DockPanel Grid.Row="1">
                         <GroupBox Header="{Binding SelectedBook.Title, FallbackValue='Книга', TargetNullValue='Книга не выбрана'}"
-                      Grid.Row="1"
-                      Margin="5,5,2,2"
-                      Foreground="Gold"
-                      FontWeight="Bold"
-                      FontSize="14"
-                      BorderBrush="Yellow">
+                                  Grid.Row="1"
+                                  Margin="5,5,2,2"
+                                  Foreground="Gold"
+                                  FontWeight="Bold"
+                                  FontSize="14"
+                                  BorderBrush="Yellow"
+                                  BorderThickness="2">
                             <TextBox Text="{Binding SelectedBook.Content}"
                                      Background="DarkSlateGray"
                                      Foreground="White"
