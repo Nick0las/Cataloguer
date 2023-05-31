@@ -30,7 +30,6 @@ namespace Cataloguer.ViewModels
             {
                 if (!Set(ref booksCollectionProperty, value)) return;
                 _CollectionViewBook.Source = value;
-                OnPropertyChanged(nameof(booksCollectionProperty));
             }
         }
         
@@ -63,7 +62,7 @@ namespace Cataloguer.ViewModels
         public ICollectionView CollectionViewBook => _CollectionViewBook?.View;
       #endregion
 
-        #region Свойство к TextBox
+        #region Свойство к TextBoxYear
 
         private string textBoxFilterYear;
         public string TextBoxFilterYear
@@ -75,7 +74,22 @@ namespace Cataloguer.ViewModels
                 _CollectionViewBook.View.Refresh();
             }
         }
-            #endregion
+        #endregion
+
+        #region Свойство к TextBoxGenre
+
+        private string textBoxFilterGenre;
+        public string TextBoxFilterGenre
+        {
+            get => textBoxFilterGenre;
+            set
+            {
+                if(!Set(ref textBoxFilterGenre, value)) return;
+                _CollectionViewBook?.View.Refresh();
+            }
+        }
+
+        #endregion
 
 
         #region метод фильтрации
@@ -95,9 +109,18 @@ namespace Cataloguer.ViewModels
             e.Accepted = false;
 
         }
+        private void OnBookFilterByGenre(object sender, FilterEventArgs e)
+        {
+            var filter_text = textBoxFilterGenre;
+            if (!(e.Item is Book book)) return;
+            if(String.IsNullOrWhiteSpace(filter_text)) return;
+            if(book.Genre.ToString().Contains(filter_text, StringComparison.OrdinalIgnoreCase)) return;
+            e.Accepted=false;
+        }
+
         #endregion
 
-    #endregion
+        #endregion
 
 
 
@@ -106,11 +129,10 @@ namespace Cataloguer.ViewModels
         //конструктор
         public MainWindow_VM()
         {
-            //IDownloadAllBooks.ShowBooks(Collections.BooksObsCollection);
-
             BooksCollectionProperty = new ObservableCollection<Book>();
             IDownloadAllBooks.ShowBooks(BooksCollectionProperty);
             _CollectionViewBook.Filter += OnBookFilterByYear;
+            _CollectionViewBook.Filter += OnBookFilterByGenre;
         }
 
         
