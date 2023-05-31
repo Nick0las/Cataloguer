@@ -78,13 +78,13 @@ namespace Cataloguer.ViewModels
 
         #region Свойство к TextBoxGenre
 
-        private string textBoxFilterGenre;
-        public string TextBoxFilterGenre
+        private string textBoxFilterAuthor;
+        public string TextBoxFilterAuthor
         {
-            get => textBoxFilterGenre;
+            get => textBoxFilterAuthor;
             set
             {
-                if(!Set(ref textBoxFilterGenre, value)) return;
+                if(!Set(ref textBoxFilterAuthor, value)) return;
                 _CollectionViewBook?.View.Refresh();
             }
         }
@@ -105,16 +105,18 @@ namespace Cataloguer.ViewModels
             if (!(e.Item is Book book)) return;
             if (String.IsNullOrWhiteSpace(filter_text)) return;
 
-            if (book.YearPublication.ToString().Contains(filter_text, StringComparison.OrdinalIgnoreCase)) return;            
+            if (book.YearPublication.ToString().Contains(filter_text, StringComparison.OrdinalIgnoreCase)) return;
             e.Accepted = false;
 
         }
-        private void OnBookFilterByGenre(object sender, FilterEventArgs e)
+        private void OnBookFilterByAuthor(object sender, FilterEventArgs e)
         {
-            var filter_text = textBoxFilterGenre;
+            var filter_text = textBoxFilterAuthor;
             if (!(e.Item is Book book)) return;
             if(String.IsNullOrWhiteSpace(filter_text)) return;
-            if(book.Genre.ToString().Contains(filter_text, StringComparison.OrdinalIgnoreCase)) return;
+            if(book.Author.Name.ToString().Contains(filter_text, StringComparison.OrdinalIgnoreCase)) return;
+            if (book.Author.Surname.ToString().Contains(filter_text, StringComparison.OrdinalIgnoreCase)) return;
+            if (book.Author.MidleName.ToString().Contains(filter_text, StringComparison.OrdinalIgnoreCase)) return;
             e.Accepted=false;
         }
 
@@ -132,7 +134,7 @@ namespace Cataloguer.ViewModels
             BooksCollectionProperty = new ObservableCollection<Book>();
             IDownloadAllBooks.ShowBooks(BooksCollectionProperty);
             _CollectionViewBook.Filter += OnBookFilterByYear;
-            _CollectionViewBook.Filter += OnBookFilterByGenre;
+            _CollectionViewBook.Filter += OnBookFilterByAuthor;
         }
 
         
