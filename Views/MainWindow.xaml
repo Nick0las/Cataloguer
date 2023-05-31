@@ -6,6 +6,8 @@
         xmlns:l="clr-namespace:Cataloguer"
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:b="clr-namespace:Cataloguer.Resources.Behaviors"
+        xmlns:model="clr-namespace:Cataloguer.Models"
+        xmlns:res="clr-namespace:Cataloguer.Resources"
         xmlns:fa="http://schemas.fontawesome.com/icons/"        
         xmlns:serv="clr-namespace:Cataloguer.Services"
         xmlns:vm="clr-namespace:Cataloguer.ViewModels"
@@ -165,7 +167,11 @@
                        HorizontalAlignment="Right"
                        VerticalAlignment="Center"
                        Margin="2,0,5,0"/>
-            <TextBox Width="200"/>
+            <ComboBox Name="ComboBoxFilter" 
+                      Width="200"
+                      HorizontalAlignment="Left"
+                      FontWeight="Light"
+                      ItemsSource="{Binding Source={res:EnumBindingSource {x:Type model:LiteraryGenres}}}"/>
 
             <fa:ImageAwesome Height="16" 
                              Icon="Solid_Search"                             
@@ -177,7 +183,9 @@
                        HorizontalAlignment="Right"
                        VerticalAlignment="Center"
                        Margin="2,0,5,0"/>
-            <TextBox Width="200"/>
+            <TextBox Width="150"
+                     Margin="10,0,10,0"
+                     Text="{Binding TextBoxFilterYear, UpdateSourceTrigger=PropertyChanged}"/>
 
         </ToolBar>
         <StatusBar DockPanel.Dock="Bottom" 
@@ -209,29 +217,7 @@
                       FontWeight="Bold"
                       FontSize="14"
                       BorderBrush="Yellow">
-                        <DockPanel DockPanel.Dock="Top">
-                            <DockPanel.Resources>
-                                <CollectionViewSource x:Key="CollectionsBooksByGenre"
-                                                      Source="{Binding Source={x:Static serv:Collections.BooksObsCollection}}"
-                                                      Filter="BooksCollectionsFilter"/>
-                            </DockPanel.Resources>
-                            <DockPanel DockPanel.Dock="Top">
-                                <fa:ImageAwesome Height="16"
-                                                 HorizontalAlignment="Left"
-                                                 Icon="Solid_Search"
-                                                 Foreground="Gold"
-                                                 Margin="5"/>
-                                <TextBlock Text="Год издания"
-                                           HorizontalAlignment="Left"
-                                           FontSize="14"
-                                           Foreground="Gold"
-                                           VerticalAlignment="Center"
-                                           Margin="2,0,5,0"/>
-                                <TextBox Name="TextBoxGenreFilter"
-                                         HorizontalAlignment="Left"
-                                         Width="200"
-                                         TextChanged="OnTitleFilterTextChanged"/>
-                            </DockPanel>
+                        <DockPanel DockPanel.Dock="Top"> 
                             <DataGrid x:Name="DataGridCollection"
                                           AutoGenerateColumns="False"
                                           CanUserReorderColumns="False"
@@ -242,7 +228,7 @@
                                           GridLinesVisibility="Vertical"                                          
                                           BorderThickness="2"
                                           FontWeight="Normal"
-                                          ItemsSource="{Binding Source={StaticResource CollectionsBooksByGenre}}"
+                                          ItemsSource="{Binding CollectionViewBook}"
                                           SelectedItem="{Binding SelectedBook}"
                                           SelectedIndex="{Binding SelectedBookIndex}"
                                           Background="DarkSlateGray">

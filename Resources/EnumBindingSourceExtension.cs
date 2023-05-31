@@ -1,16 +1,11 @@
-﻿using Cataloguer.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows.Markup;
 
 namespace Cataloguer.Resources
 {
     internal class EnumBindingSourceExtension : MarkupExtension
     {
-        public Type EnumType {get; private set;}
+        public Type EnumType { get; private set; }
 
         public EnumBindingSourceExtension(Type enumType)
         {

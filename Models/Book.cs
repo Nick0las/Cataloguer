@@ -21,10 +21,9 @@ namespace Cataloguer.Models
 
         /// <summary>Прокси свойство для передачи в ComboBox</summary>
         public string FullName => $"{Surname} {Name} {MidleName}";
-
-        /// <summary> Коллекция книг автора</summary>
-        public ICollection<BookAuthor> BookAuthorCollection { get; set; }
     }
+
+
     internal class Book : IEntity 
     {
         public int? Id { get; set; }
@@ -38,10 +37,8 @@ namespace Cataloguer.Models
         public LiteraryGenres Genre { get; set; }
 
         ///<summary> год издания</summary>
-        public uint YearPublication { get; set; }
+        public uint? YearPublication { get; set; }
         public string? Content { get; set; }
-        public ICollection<Book> BookCollections { get; set; }
-
-
+    
     }
 }

@@ -26,24 +26,5 @@ namespace Cataloguer
         {
             InitializeComponent();            
         }
-
-        private void BooksCollectionsFilter(object sender, FilterEventArgs e)
-        {
-            if (!(e.Item is Book book)) return;
-
-            var filter_text = TextBoxGenreFilter.Text;
-            if(filter_text.Length == 0) return;
-
-            if(book.YearPublication.ToString().Contains(filter_text, StringComparison.OrdinalIgnoreCase)) return;
-            if (book.YearPublication.ToString().Contains(filter_text, StringComparison.OrdinalIgnoreCase)) return;            
-            e.Accepted = false;
-        }
-
-        private void OnTitleFilterTextChanged(object sender, TextChangedEventArgs e)
-        {
-            var text_box = (TextBox)sender;
-            var collections = (CollectionViewSource)text_box.FindResource("CollectionsBooksByGenre");
-            collections.View.Refresh();
-        }
     }
 }

@@ -1,10 +1,5 @@
 ﻿using Cataloguer.ViewModels.ViewModel_Base;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Cataloguer.ViewModels.ValidatableViewModelBase
 {

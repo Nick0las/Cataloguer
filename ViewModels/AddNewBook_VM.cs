@@ -3,13 +3,8 @@ using Cataloguer.Models;
 using Cataloguer.Services;
 using Cataloguer.ViewModels.ValidatableViewModelBase;
 using Cataloguer.Resources.Interfaces;
-using Cataloguer.ViewModels.ViewModel_Base;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 

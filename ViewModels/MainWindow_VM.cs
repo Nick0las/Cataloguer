@@ -1,12 +1,10 @@
-﻿using Cataloguer.Commands;
-using Cataloguer.Models;
+﻿using Cataloguer.Models;
 using Cataloguer.Resources.Interfaces;
-using Cataloguer.Services;
 using Cataloguer.ViewModels.ViewModel_Base;
-using Cataloguer.Views;
+using System;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Windows.Input;
+using System.ComponentModel;
+using System.Windows.Data;
 
 namespace Cataloguer.ViewModels
 {
@@ -24,7 +22,18 @@ namespace Cataloguer.ViewModels
         #endregion
 
         #region Свойство ObservableCollection, для отображения книг в DataGrid
-        public ObservableCollection<Book> BooksObsCollection { get; }
+        private ObservableCollection<Book> booksCollectionProperty;
+        public ObservableCollection<Book> BooksCollectionProperty
+        {
+            get => booksCollectionProperty;
+            set
+            {
+                if (!Set(ref booksCollectionProperty, value)) return;
+                _CollectionViewBook.Source = value;
+                OnPropertyChanged(nameof(booksCollectionProperty));
+            }
+        }
+        
         #endregion
 
         #region Свойства для выделенной строки в DataGrid
@@ -46,15 +55,62 @@ namespace Cataloguer.ViewModels
 
         #endregion
 
-       
+
+    #region Фильтрация
+
+      #region CollectionViewSource
+        private readonly CollectionViewSource _CollectionViewBook = new ();
+        public ICollectionView CollectionViewBook => _CollectionViewBook?.View;
+      #endregion
+
+        #region Свойство к TextBox
+
+        private string textBoxFilterYear;
+        public string TextBoxFilterYear
+        {
+            get => textBoxFilterYear;
+            set
+            {
+                if(!Set(ref textBoxFilterYear, value)) return;
+                _CollectionViewBook.View.Refresh();
+            }
+        }
+            #endregion
+
+
+        #region метод фильтрации
+        /// <summary>
+        ///метод фильтрации
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OnBookFilterByYear(object sender, FilterEventArgs e)
+        {
+            var filter_text = textBoxFilterYear;
+
+            if (!(e.Item is Book book)) return;
+            if (String.IsNullOrWhiteSpace(filter_text)) return;
+
+            if (book.YearPublication.ToString().Contains(filter_text, StringComparison.OrdinalIgnoreCase)) return;            
+            e.Accepted = false;
+
+        }
+        #endregion
+
+    #endregion
+
+
+
 
 
         //конструктор
         public MainWindow_VM()
         {
-            //BooksObsCollection = new ObservableCollection<Book>();
-            
-            IDownloadAllBooks.ShowBooks(Collections.BooksObsCollection);
+            //IDownloadAllBooks.ShowBooks(Collections.BooksObsCollection);
+
+            BooksCollectionProperty = new ObservableCollection<Book>();
+            IDownloadAllBooks.ShowBooks(BooksCollectionProperty);
+            _CollectionViewBook.Filter += OnBookFilterByYear;
         }
 
         
